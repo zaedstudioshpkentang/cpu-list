@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CPU List</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>List of Smartphone CPUs</h1>
+        
+        <!-- Search Bar -->
+        <input 
+            type="text" 
+            id="searchBar" 
+            placeholder="Search CPU..." 
+            style="width: 96%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 4px;"
+            onkeyup="filterTable()"
+        >
+
+        <table id="cpuTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Processor</th>
+                    <th>Brand</th>
+                    <th>Rating</th>
+                    <th>AnTuTu 10</th>
+                    <th>Geekbench 6</th>
+                    <th>Cores</th>
+                    <th>Clock Speed</th>
+                    <th>GPU</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for cpu in cpus %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>{{ cpu.processor }}</td>
+                    <td>{{ cpu.brand }}</td>
+                    <td>{{ cpu.rating }}</td>
+                    <td>{{ cpu.antutu }}</td>
+                    <td>{{ cpu.geekbench }}</td>
+                    <td>{{ cpu.cores }}</td>
+                    <td>{{ cpu.clock_speed }}</td>
+                    <td>{{ cpu.gpu }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- Add JavaScript for search functionality -->
+    <script>
+        function filterTable() {
+            const searchInput = document.getElementById('searchBar').value.toLowerCase();
+            const table = document.getElementById('cpuTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const row = rows[i];
+                const textContent = row.textContent.toLowerCase();
+                row.style.display = textContent.includes(searchInput) ? '' : 'none';
+            }
+        }
+    </script>
+</body>
+</html>

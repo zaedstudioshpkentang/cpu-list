@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+.container {
+    max-width: 100%; /* Pastikan lebar container mengikuti viewport */
+    padding: 20px;
+    margin: 0 auto;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Tambahkan ini untuk menangani tabel yang lebar */
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+table {
+    width: 100%; /* Tabel menyesuaikan lebar container */
+    border-collapse: collapse;
+    word-wrap: break-word; /* Pastikan teks panjang dipisah jika diperlukan */
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    word-wrap: break-word; /* Teks di dalam sel tabel tetap terlihat */
+}
+
+th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 10px; /* Kurangi padding untuk tampilan kecil */
+    }
+
+    table {
+        font-size: 14px; /* Sesuaikan ukuran teks pada layar kecil */
+    }
+}
